@@ -1496,7 +1496,7 @@ class _DragItemProxy extends StatelessWidget {
       data: MediaQuery.of(context).removePadding(removeTop: true),
       child: AnimatedBuilder(
         animation: animation,
-        builder: (BuildContext context, Widget? child) {
+        builder: (BuildContext context, Widget? chil) {
           Offset effectivePosition = position;
           final Offset? dropPosition = listState._finalDropPosition;
           if (dropPosition != null) {
