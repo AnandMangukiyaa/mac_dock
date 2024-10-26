@@ -1502,6 +1502,7 @@ class _DragItemProxy extends StatelessWidget {
           if (dropPosition != null) {
             effectivePosition = Offset.lerp(dropPosition - overlayOrigin, effectivePosition, Curves.easeOut.transform(animation.value))!;
           }
+
           return Positioned(
             left: effectivePosition.dx,
             top: effectivePosition.dy,
