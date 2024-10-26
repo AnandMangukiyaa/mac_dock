@@ -7,7 +7,7 @@ import 'dart:ui' show lerpDouble;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:mac_dock/my_reorderable_list.dart' as mulist;
 
 
 
@@ -179,7 +179,7 @@ class MyReorderableListView extends StatefulWidget {
   final int itemCount;
 
   /// {@macro flutter.widgets.reorderable_list.onReorder}
-  final ReorderCallback onReorder;
+  final mulist.ReorderCallback onReorder;
 
   /// {@macro flutter.widgets.reorderable_list.onReorderStart}
   final void Function(int index)? onReorderStart;
@@ -188,22 +188,22 @@ class MyReorderableListView extends StatefulWidget {
   final void Function(int index)? onReorderEnd;
 
   /// {@macro flutter.widgets.reorderable_list.proxyDecorator}
-  final ReorderItemProxyDecorator? proxyDecorator;
+  final mulist.ReorderItemProxyDecorator? proxyDecorator;
 
   /// If true: on desktop platforms, a drag handle is stacked over the
   /// center of each item's trailing edge; on mobile platforms, a long
   /// press anywhere on the item starts a drag.
   ///
   /// The default desktop drag handle is just an [Icons.drag_handle]
-  /// wrapped by a [ReorderableDragStartListener]. On mobile
+  /// wrapped by a [mulist.ReorderableDragStartListener]. On mobile
   /// platforms, the entire item is wrapped with a
-  /// [ReorderableDelayedDragStartListener].
+  /// [mulist.ReorderableDelayedDragStartListener].
   ///
   /// To change the appearance or the layout of the drag handles, make
   /// this parameter false and wrap each list item, or a widget within
-  /// each list item, with [ReorderableDragStartListener] or
-  /// [ReorderableDelayedDragStartListener], or a custom subclass
-  /// of [ReorderableDragStartListener].
+  /// each list item, with [mulist.ReorderableDragStartListener] or
+  /// [mulist.ReorderableDelayedDragStartListener], or a custom subclass
+  /// of [mulist.ReorderableDragStartListener].
   ///
   /// The following sample specifies `buildDefaultDragHandles: false`, and
   /// uses a [Card] at the leading edge of each item for the item's drag handle.
@@ -320,7 +320,7 @@ class _MyReorderableListViewState extends State<MyReorderableListView> {
                     bottom: 8,
                     child: Align(
                       alignment: AlignmentDirectional.bottomCenter,
-                      child: ReorderableDragStartListener(
+                      child: mulist.ReorderableDragStartListener(
                         index: index,
                         child: const Icon(Icons.drag_handle),
                       ),
@@ -340,7 +340,7 @@ class _MyReorderableListViewState extends State<MyReorderableListView> {
                     end: 8,
                     child: Align(
                       alignment: AlignmentDirectional.centerEnd,
-                      child: ReorderableDragStartListener(
+                      child: mulist.ReorderableDragStartListener(
                         index: index,
                         child: const Icon(Icons.drag_handle),
                       ),
@@ -354,7 +354,7 @@ class _MyReorderableListViewState extends State<MyReorderableListView> {
         case TargetPlatform.android:
         case TargetPlatform.macOS:
         case TargetPlatform.fuchsia:
-          return ReorderableDragStartListener(
+          return mulist.ReorderableDragStartListener(
             key: itemGlobalKey,
             index: index,
             child: item,
@@ -428,7 +428,7 @@ class _MyReorderableListViewState extends State<MyReorderableListView> {
           ),
         SliverPadding(
           padding: listPadding,
-          sliver: SliverReorderableList(
+          sliver: mulist.MySliverReorderableList(
             itemBuilder: _itemBuilder,
             itemExtent: widget.itemExtent,
             itemExtentBuilder: widget.itemExtentBuilder,
